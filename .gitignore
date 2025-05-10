@@ -1,0 +1,4 @@
+*.meta
+
+# Не игнорировать файл .gitignore
+!.gitignore

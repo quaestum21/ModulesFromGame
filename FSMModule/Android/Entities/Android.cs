@@ -25,7 +25,6 @@ public class Android : Mob
 
     public void AndroidSetData(Transform target, float health, Transform carTarget = null)
     {
-
         PlayerTarget = target;
         MobHealth.SetHealth(health);
         if (carTarget != null)

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public sealed class AndroidBatteryiesController : MonoBehaviour
 {
-    [SerializeField] private Health _health; // Ссылка на компонент здоровья
-    [SerializeField] private List<AndroidBattery> _batteries; // Три батарейки
+    [SerializeField] private Health _health;
+    [SerializeField] private List<AndroidBattery> _batteries;
     [SerializeField] private Material _greenMaterial;
     [SerializeField] private Material _yellowMaterial;
     [SerializeField] private Material _redMaterial;
@@ -24,11 +24,11 @@ public sealed class AndroidBatteryiesController : MonoBehaviour
     {
         float healthPercent = _health.CurrentHealth / _health.MaxHealth;
 
-        // Скрываем все батарейки сначала
+        // hide all baterries
         foreach (var battery in _batteries)
             battery.gameObject.SetActive(false);
         
-        //в зависимости от кол-ва здоровья меняем визуальную часть батареек
+        //count perscent of health and changed materials + hide objects
         if (healthPercent > 0.7f)
         {
             for (int i = 0; i < _batteries.Count; i++)

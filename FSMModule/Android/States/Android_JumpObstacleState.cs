@@ -5,8 +5,8 @@ public class Android_JumpObstacleState : AndroidState
 {
     private const float _jumpDuration = 1.0f;
     private bool isJumping = false;
-    private float jumpForce = 4f; // Сила прыжка вперед
-    private float jumpHeight = 1.5f; // Высота прыжка
+    private float jumpForce = 4f;// Forward Jump Force
+    private float jumpHeight = 1.5f;
     private Vector3 jumpDirection;
 
     void OnEnable() => StartJump();
@@ -16,29 +16,28 @@ public class Android_JumpObstacleState : AndroidState
         float startTime = Time.time;
         Vector3 startPosition = transform.position;
 
-        // Задаем направление прыжка вперед (по направлению движения объекта)
-        jumpDirection = transform.forward; // Или используйте другое направление, если нужно
+        // Set the direction of the jump forward (in the direction of the object's movement)
+        jumpDirection = transform.forward; // Or use another direction if needed
 
-        float targetDistance = jumpForce; // Дистанция прыжка вперед
-        float targetHeight = jumpHeight; // Максимальная высота прыжка
+        float targetDistance = jumpForce; // Forward jump distance
+        float targetHeight = jumpHeight; // Maximum jump height
 
         while (true)
         {
             float elapsedTime = Time.time - startTime;
-            float progress = elapsedTime / _jumpDuration; // Длительность прыжка (1 секунда)
-
+            float progress = elapsedTime / _jumpDuration; // Jump duration (1 second)
             if (progress >= _jumpDuration)
             {
-                // Завершаем прыжок
+                // ending jump
                 isJumping = false;
                 transform.position = startPosition + jumpDirection * targetDistance;
                 yield break;
             }
 
-            // Рассчитываем высоту прыжка (парабола)
+            // Calculate the jump height (parabola)
             float height = Mathf.Sin(progress * Mathf.PI) * targetHeight;
 
-            // Перемещаем объект
+            // Move the object
             transform.position = startPosition + jumpDirection * targetDistance * progress + Vector3.up * height;
 
             yield return null;

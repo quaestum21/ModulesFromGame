@@ -1,5 +1,5 @@
 using UnityEngine;
-//Скрипт предназначен для ручного запуска fsm, если моба располагают вручную на сцене 
+//The script is designed to manually launch fsm if the mob is placed manually on the scene
 [RequireComponent(typeof(AndroidStateMachine))]
 public class FSMStarter : MonoBehaviour
 {

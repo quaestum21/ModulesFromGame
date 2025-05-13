@@ -31,47 +31,47 @@ public class RunAttackState : AttackState
 
     private IEnumerator Jump()
     {
-        // Начальная позиция и позиция цели
+        // Start position and target position
         _jumpStartPosition = transform.position;
         _jumpEndPosition = Android.CarTarget.position;
         _jumpStartTime = Time.time;
         _isJumping = true;
 
-        // Ждём длительность прыжка
+        // Wait for the duration of the jump
         yield return new WaitForSeconds(Android.JumpDuration);
 
-        // Завершаем прыжок, фиксируем позицию на машине и запускаем атаку
+        // Complete the jump, lock the position on the car and launch the attack
         AttachToTarget();
         CauseDamage();
 
-        // Ждём задержку после атаки
+        // Wait for a delay after the attack
         yield return new WaitForSeconds(Android.DelayAfterAttack);
 
-        // Завершаем атаку и открепляем робота от машины
+        // Complete the attack and detach the robot from the car
         AttackEnded();
         DetachFromTarget();
     }
     private void UpdateJump()
     {
-        // Вычисляем прогресс прыжка
+        // Calculate the jump progress
         float jumpProgress = (Time.time - _jumpStartTime) / Android.JumpDuration;
         Vector3 currentPosition = Vector3.Lerp(_jumpStartPosition, _jumpEndPosition, jumpProgress);
-        
-        // Высота прыжка
+
+        // Jump height
         currentPosition.y += Mathf.Sin(jumpProgress * Mathf.PI) * Android.JumpForce;
         
         transform.position = currentPosition;
-        
-        // Обновляем конечную позицию (если машина движется)
+
+        // Update the final position (if the car is moving)
         _jumpEndPosition = Android.CarTarget.position;
     }
     private void AttachToTarget()
     {
-        // Смещаем робота чуть назад относительно позиции машины
+        // Move the robot slightly back relative to the car's position
         Vector3 offsetPosition = Android.CarTarget.position - Android.CarTarget.forward * 0.7f; // Смещение на 1 метр назад (настраиваемое значение)
         transform.position = offsetPosition;
 
-        // Делаем машину родительским объектом, чтобы робот двигался вместе с ней
+        // Make the car a parent object so that the robot moves with it
         transform.parent = Android.CarTarget;
         _isJumping = false;
     }

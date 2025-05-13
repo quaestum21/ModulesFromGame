@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 /// <summary>
-/// ƒанный класс разбивает ранее спарсенный файл json
+/// This class splits a previously parsed json file
 /// </summary>
 public static class FirebaseFileSplitter
 {
@@ -99,7 +99,7 @@ public static class FirebaseFileSplitter
         string baseParametersJson = File.ReadAllText(baseFileName);
         var baseParameters = JsonUtility.FromJson<BaseValuesFromFirebaseRemoteConfig>(baseParametersJson);
 
-        if (statusOfRetake) // определ€ет, обновл€ть файлы определенной групы или все сразу
+        if (statusOfRetake) //determines whether to update files of a specific group or all at once
         {
             var statRetake = JsonConvert.DeserializeObject<StatRetake>(baseParameters.stat_retake);
 

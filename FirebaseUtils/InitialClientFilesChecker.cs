@@ -4,7 +4,7 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 /// <summary>
-/// Класс для создания файлов Json которые отвечают за прогресс игрока(лут, уровни и etc..)
+/// Class for creating Json files that are responsible for player progress (loot, levels, etc.)
 /// </summary>
 public static class InitialClientFilesChecker 
 {

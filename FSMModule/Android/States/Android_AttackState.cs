@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Android_AttackState : AndroidState
 {
-    [SerializeField] private float _attackTimeDelay; // задержка перед следущей атакой
-    private Vector3 _targetOffset; // Смещение для текущего моба
+    [SerializeField] private float _attackTimeDelay; // delay before next attack
+    private Vector3 _targetOffset;// Offset for the current mob
     private IHealth _targetHealth;
     private float _time;
     private void OnEnable()
@@ -18,14 +18,14 @@ public class Android_AttackState : AndroidState
 
     private void Attack()
     {
-        // Целевая позиция с учетом смещения
+        // Target position given offset
         Vector3 targetPositionWithOffset = Android.PlayerTarget.position + _targetOffset;
 
-        // Направление к смещенной позиции
+        // Direction to offset position
         Vector3 direction = (targetPositionWithOffset - transform.position).normalized;
         float distanceToTarget = Vector3.Distance(transform.position, targetPositionWithOffset);
 
-        // Поворачиваем моба к цели с учетом смещения
+        // Turn the mob towards the target taking into account the offset
         transform.LookAt(targetPositionWithOffset);
 
         _time += Time.deltaTime;

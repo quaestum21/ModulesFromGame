@@ -9,7 +9,7 @@ public class Android_JumpObstacleToWalkTransition : AndroidTransition
     {
         if (animator != null)
         {
-            // Проверяем, завершена ли анимация прыжка
+            // Check if the jump animation is complete
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("ObstacleJump") &&
                 animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
                 NeedTransit = true;

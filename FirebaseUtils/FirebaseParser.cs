@@ -5,16 +5,16 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 /// <summary>
-///  ласс предназначенный дл€ вз€ти€ всех параметров из firebase,
-/// Ѕерет параметры в том случае, если локальный numberOfUpdate и удаленный не совпадают
+/// Class designed to take all parameters from firebase,
+/// Takes parameters if local numberOfUpdate and remote do not match
 /// </summary>
 public static class FirebaseParser
 {
-    //им€ файла дл€ сохранени€ данных c firebase
+    //file name to save data from firebase
     private const string _jsonFileName = "FirebaseRemoteConfigBaseData.json";
     private const string numberOfUpdate = "number_of_update";
 
-    //параметры которые необходимо вз€ть
+    //parameters that need to be taken
     private static readonly string[] _valueForExport =
     {
         "warhouse_characteristics",

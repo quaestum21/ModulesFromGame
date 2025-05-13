@@ -34,14 +34,14 @@ public class Android_JumpToTargetState : AndroidState
             _targetAttachPoints.ClearPlaceForNewMob(this.Android);
             return;
         }
-        // ÷елева€ позици€ с учетом смещени€
+        // Target position given offset
         Vector3 targetPosition = Android.PlayerTarget.position;
 
-        // Ќаправление к смещенной позиции
+        // Direction to offset position
         Vector3 direction = (targetPosition - transform.position).normalized;
         float distanceToTarget = Vector3.Distance(transform.position, targetPosition);
 
-        // ѕоворачиваем моба к цели с учетом смещени€
+        // Turn the mob towards the target taking into account the offset
         transform.LookAt(targetPosition);
     }
 
@@ -49,8 +49,7 @@ public class Android_JumpToTargetState : AndroidState
     {
         gameObject.GetComponent<AndroidSounds>().PlayClipOneShot(AndroidClipType.Jump);
         if (transformForAttach == null) yield break;
-        // ∆дем пока анимаци€ начнетс€
-
+        // Wait for the animation to start
         _jumpStartPosition = transform.position;
         _jumpStartTime = Time.time;
         _isJumping = true;
@@ -61,7 +60,7 @@ public class Android_JumpToTargetState : AndroidState
         {
             float progress = t / jumpDuration;
 
-            // **ќбновл€ем конечную позицию на каждом кадре, если точка движетс€**
+            // **Update the final position every frame if the point is moving***
             _jumpEndPosition = transformForAttach.position;
 
             Vector3 currentPosition = Vector3.Lerp(_jumpStartPosition, _jumpEndPosition, progress);
@@ -70,7 +69,7 @@ public class Android_JumpToTargetState : AndroidState
             transform.position = currentPosition;
             yield return null;
         }
-        // ‘инальное закрепление моба
+        // Final mob pinning
         AttachToTarget();
     }
     private void AttachToTarget()

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Класс для смены анимаций в зависимости от состояния моба
+///Class for changing animations depending on the state of the mob
 /// </summary>
 [RequireComponent(typeof(AndroidStateMachine))]
 public sealed class AndroidAnimatorController : MonoBehaviour
@@ -16,16 +16,15 @@ public sealed class AndroidAnimatorController : MonoBehaviour
     }
     private void OnDestroy()
     {
-        // Проверяем, что объект существует перед отпиской
+        // Check that the object exists before unsubscribing
         if (_robotStateMachine != null)
             _robotStateMachine.StateChanged -= ChangeAnimation;     
     }
     private void ChangeAnimation(AndroidState state)
     {
-        // Проверка на null аниматора
         if (_animator == null) return;
 
-        // Логика анимаций
+        // checking states
         if (state is Android_WakeUpState)  
             _animator.SetTrigger("WakeUp");
         

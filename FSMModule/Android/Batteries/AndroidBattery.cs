@@ -6,13 +6,13 @@ public sealed class AndroidBattery : MonoBehaviour
     public void SetMaterial(Material material)
     {
         if (material == null || _renderer ==null) return;
-        // Получаем все материалы
+        // give ll materials
         Material[] mats = _renderer.materials;
 
-        // Изменяем цвет конкретного
+        // Changing the color of a specific
         mats[2] = material;
 
-        // Обновляем материалы на рендерере
+        // Updating materials on the renderer
         _renderer.materials = mats;
     }
 }

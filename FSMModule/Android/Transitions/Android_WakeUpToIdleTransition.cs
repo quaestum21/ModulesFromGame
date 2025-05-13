@@ -18,11 +18,11 @@ public class Android_WakeUpToIdleTransition : AndroidTransition
     }
     private IEnumerator WaitForAnimationCompletion()
     {
-        // Ждем пока анимация начнется
+        // Wait for the animation to start
         while (!_androidAnimator.GetCurrentAnimatorStateInfo(0).IsName(_nameOfanimationForEnd))
             yield return null;
-        
-        // Ждем завершения анимации
+
+        // Wait for the animation to complete
         while (_androidAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.9f)
             yield return null;
         

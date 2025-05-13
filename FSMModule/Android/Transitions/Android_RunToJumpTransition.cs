@@ -3,7 +3,7 @@ using UnityEngine;
 public class Android_RunToJumpTransition : AndroidTransition
 {
     [Range(1,10)]
-    [SerializeField] private float _jumpDistanceThreshold = 5f; // Дистанция до машины, при которой можно прыгнуть
+    [SerializeField] private float _jumpDistanceThreshold = 5f; // Distance to the car at which you can jump
 
     private CarAttachPoints _attachPoints;
 

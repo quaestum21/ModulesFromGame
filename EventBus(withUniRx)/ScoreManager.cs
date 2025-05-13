@@ -6,11 +6,11 @@ public class ScoreManager : MonoBehaviour
     {
         Debug.Log($"[ScoreManager] Player {playerId} scored {score} points.");
 
-        // Публикация события
+        // Publish event
         EventBus.Publish(new PlayerScoredEvent(playerId, score));
     }
 
-    // вызов по кнопке
+    // call by button
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

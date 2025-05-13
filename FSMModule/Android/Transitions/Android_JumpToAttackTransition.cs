@@ -17,7 +17,7 @@ public class Android_JumpToAttackTransition : AndroidTransition
     }
     private IEnumerator WaitForAnimationCompletion()
     {
-        // Ждем пока анимация начнется
+        // Wait for the animation to start
         while (!_androidAnimator.GetCurrentAnimatorStateInfo(0).IsName(_nameOfanimationForEnd))
             yield return null;
 

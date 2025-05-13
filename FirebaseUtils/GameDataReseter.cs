@@ -30,10 +30,10 @@ public class GameDataReseter : MonoBehaviour
             foreach (string directory in Directory.GetDirectories(path))
                 Directory.Delete(directory, true);
             
-            Debug.Log("Все данные в persistentDataPath удалены.");
+            Debug.Log("All data in persistentDataPath has been deleted.");
         }
         else
-            Debug.LogWarning("persistentDataPath не существует: " + path);
+            Debug.LogWarning("persistentDataPath does not exist: " + path);
         
     }
 }

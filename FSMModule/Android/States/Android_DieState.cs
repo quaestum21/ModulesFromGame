@@ -8,7 +8,7 @@ public class Android_DieState : AndroidState
         gameObject.GetComponent<AndroidSounds>().PlayClipOneShot(AndroidClipType.Death);
         gameObject.GetComponent<MobRigidbodies>().OffKinematics();
         transform.parent = null;
-        SetLayerRecursively(gameObject, 0);//задаем базовый слой всем потомкам, для того чтобы нельзя было в него стрелять
+        SetLayerRecursively(gameObject, 0);//we set the base layer for all descendants so that it cannot be shot at
 
         if (!Android.PlayerOnPickup) return;
         

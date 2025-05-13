@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public static class EventBus
 {
-    // Хранилище Subjectов по типу событий
+    //Subject Storage by Event Type
     private static readonly Dictionary<Type, object> _subjects = new Dictionary<Type, object>();
 
-    // Подписка на события определённого типа
+    // Subscribe to events of a certain type
     public static IObservable<T> OnEvent<T>()
     {
         var type = typeof(T);
@@ -18,7 +18,7 @@ public static class EventBus
         return ((Subject<T>)_subjects[type]).AsObservable();
     }
 
-    // Публикация события
+    // Publish event
     public static void Publish<T>(T eventData)
     {
         var type = typeof(T);
@@ -27,8 +27,7 @@ public static class EventBus
             ((Subject<T>)subject).OnNext(eventData);
         }
     }
-
-    // Очистка (например, при смене сцены)
+    // Cleanup (e.g. when changing scene)
     public static void Clear()
     {
         _subjects.Clear();

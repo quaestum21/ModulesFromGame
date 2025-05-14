@@ -19,6 +19,6 @@
 <b>./Serializable</b> - хранит в себе сериализуемые классы для корректного парсинга.<br>
 
 Для корректной работы данного модуля запускать сетоды классов необходимо в следущем порядке:
-1)FirebaseParser.ExtractJsonFile()
-2)FirebaseFileSplitter.Split()
-3)InitialClientFilesChecker.CheckClientDefaultFiles()
+1)FirebaseParser.ExtractJsonFile()<br>
+2)FirebaseFileSplitter.Split()<br>
+3)InitialClientFilesChecker.CheckClientDefaultFiles()<br>
